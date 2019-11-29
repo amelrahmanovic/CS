@@ -21,7 +21,7 @@ namespace CS.Controllers
         }
 
         // GET: api/Booking/5
-        [HttpGet("{id}", Name = "Get")]
+        [HttpGet("{id}", Name = "BookingGet")]
         public Booking Get(int id)
         {
             return s.Booking.SingleOrDefault(x => x.id == id);
@@ -38,9 +38,9 @@ namespace CS.Controllers
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] Booking booking)
         {
-            if (id== booking.id)
+            if (id == booking.id)
             {
-                Booking bookingFromDatabase = s.Booking.Single(x=>x.id==id);
+                Booking bookingFromDatabase = s.Booking.Single(x => x.id == id);
                 bookingFromDatabase.object_name = booking.object_name;
                 bookingFromDatabase.capacity_provider_id = booking.capacity_provider_id;
                 bookingFromDatabase.date_from = booking.date_from;
