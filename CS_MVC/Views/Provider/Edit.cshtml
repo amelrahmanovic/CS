@@ -1,0 +1,18 @@
+﻿
+
+@{
+    Models.Capacity_provider provider = (Models.Capacity_provider)ViewData["Provider"];
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>Provider</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        @Html.Partial("_Form.cshtml")
+    </div>
+</div>
+

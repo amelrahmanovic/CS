@@ -32,6 +32,7 @@ namespace CS.Controllers
         public void Post([FromBody] Capacity_provider capacity_Provider)
         {
             s.Capacity_provider.Add(capacity_Provider);
+            s.SaveChanges();
         }
 
         // PUT: api/Capacity/5
@@ -55,6 +56,7 @@ namespace CS.Controllers
         public void Delete(int id)
         {
             s.Capacity_provider.Remove(s.Capacity_provider.Single(x => x.id == id));
+            s.SaveChanges();
         }
     }
 }

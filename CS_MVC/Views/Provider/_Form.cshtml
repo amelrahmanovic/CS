@@ -1,0 +1,25 @@
+﻿@{Models.Capacity_provider provider = (Models.Capacity_provider)ViewData["Provider"]; }
+<form action="/Provider/Save">
+    <div class="form-group">
+        <input type="hidden" id="id" value="@provider.id" />
+        <label>Name:</label>
+        <input type="text" class="form-control" name="Name" id="Name" placeholder="Name" value="@provider.name" required>
+    </div>
+    <div class="form-group">
+        <label>City:</label>
+        <input type="text" class="form-control" name="City" id="City" placeholder="City" value="@provider.city" required>
+    </div>
+    <div class="form-group">
+        <label>Phone:</label>
+        <input type="text" class="form-control" name="Phone" id="Phone" placeholder="Phone" value="@provider.phone" required>
+    </div>
+    <div class="form-group">
+        <label>E-mail:</label>
+        <input type="email" class="form-control" name="Email" id="Email" placeholder="E-mail" value="@provider.email">
+    </div>
+    <div class="form-group">
+        <label>Contact number:</label>
+        <input type="text" class="form-control" name="Contact" id="Contact" placeholder="Contact" value="@provider.contract_number" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
