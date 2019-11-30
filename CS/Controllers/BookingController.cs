@@ -32,6 +32,7 @@ namespace CS.Controllers
         public void Post([FromBody] Booking booking)
         {
             s.Booking.Add(booking);
+            s.SaveChanges();
         }
 
         // PUT: api/Booking/5
@@ -58,6 +59,7 @@ namespace CS.Controllers
         public void Delete(int id)
         {
             s.Booking.Remove(s.Booking.Single(x => x.id == id));
+            s.SaveChanges();
         }
     }
 }

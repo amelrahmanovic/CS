@@ -55,6 +55,7 @@ namespace CS.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+
             s.Capacity_provider.Remove(s.Capacity_provider.Single(x => x.id == id));
             s.SaveChanges();
         }

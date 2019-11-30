@@ -1,0 +1,45 @@
+﻿@{
+    Models.Capacity_provider provider = (Models.Capacity_provider)ViewData["Provider"];
+    Models.Booking booking = (Models.Booking)ViewData["Booking"];
+}
+<form action="/Booking/Save">
+    <div class="form-group">
+        <input type="hidden" name="id" id="id" value="@booking.id" />
+        <input type="hidden" name="capacity_provider_id" id="capacity_provider_id" value="@provider.id" />
+        <label>Object:</label>
+        <input type="text" class="form-control" name="Object" id="Object" placeholder="Object" value="@booking.object_name" required>
+    </div>
+    <div class="form-group">
+        <label>From:</label>
+        <input type="text" class="form-control" name="From" id="From" placeholder="dd/mm/yyy" value="@booking.date_from.ToShortDateString()" required>
+    </div>
+    <div class="form-group">
+        <label>To:</label>
+        <input type="text" class="form-control" name="To" id="To" placeholder="dd/mm/yyy" value="@booking.date_to.ToShortDateString()" required>
+    </div>
+    <div class="form-group">
+        <label>Active:</label>
+        @if (booking.is_active)
+        {
+            <input type="checkbox" class="form-control" name="is_active" id="is_active" checked>
+        }
+        else
+        {
+            <input type="checkbox" class="form-control" name="is_active" id="is_active">
+        }
+
+    </div>
+    <div class="form-group">
+        <label>Amount:</label>
+        <input type="text" class="form-control" name="amount" id="amount" placeholder="0.00" value="@booking.amount" required>
+    </div>
+    <div class="form-group">
+        <label>Currency:</label>
+        <input type="text" class="form-control" name="currency" id="currency" placeholder="Currency" value="@booking.currency" required>
+    </div>
+    <div class="form-group">
+        <label>Comment:</label>
+        <input type="text" class="form-control" name="comment" id="comment" placeholder="Currency" value="@booking.comment">
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>

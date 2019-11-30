@@ -1,0 +1,89 @@
+﻿
+@{
+    Models.Capacity_provider provider = (Models.Capacity_provider)ViewData["Provider"];
+    List<Models.Booking> bookings = (List<Models.Booking>)ViewData["Bookings"];
+    Models.Booking booking = (Models.Booking)ViewData["Booking"];
+    ViewData["Title"] = "Booking";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Booking</h1>
+
+<div class="modal fade" id="AddNew" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Booking</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                @Html.Partial("_Form.cshtml")
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@Html.Partial("../Provider/_Form.cshtml")
+
+
+@if (provider.id != 0)
+{
+    <br />
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddNew">
+        Add new
+    </button>
+    <br />
+    <br />
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>
+                    Name:
+                </th>
+                <th>
+                    From:
+                </th>
+                <th>
+                    To:
+                </th>
+                <th>
+                    Active:
+                </th>
+                <th>
+                    Amount:
+                </th>
+                <th>
+                    Comment:
+                </th>
+                <th>
+                    Actions:
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var x in bookings)
+            {
+                <tr>
+                    <td> @x.object_name </td>
+                    <td> @x.date_from.ToShortDateString() </td>
+                    <td> @x.date_to.ToShortDateString() </td>
+                    <td> @x.is_active </td>
+                    <td> @x.amount @x.currency </td>
+                    <td> @x.comment </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = x.id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = x.id})
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+}
