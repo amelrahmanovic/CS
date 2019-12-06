@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
 namespace CS_MVC.DAO
@@ -14,6 +15,8 @@ namespace CS_MVC.DAO
 
         public List<Booking> Get()
         {
+            client.DefaultRequestHeaders.Add("api-version", "1.0");
+
             client.BaseAddress = new Uri(Uri);
             HttpResponseMessage response = client.GetAsync("api/Booking").Result;
             if (response.IsSuccessStatusCode)
@@ -22,6 +25,8 @@ namespace CS_MVC.DAO
         }
         public Booking Get(int id)
         {
+            client.DefaultRequestHeaders.Add("api-version", "1.0");
+
             client.BaseAddress = new Uri(Uri);
             HttpResponseMessage response = client.GetAsync("api/Booking" + "/" + id).Result;
             if (response.IsSuccessStatusCode)
@@ -30,16 +35,22 @@ namespace CS_MVC.DAO
         }
         public void Post(Booking booking)
         {
+            client.DefaultRequestHeaders.Add("api-version", "1.0");
+
             client.BaseAddress = new Uri(Uri);
             HttpResponseMessage response = client.PostAsJsonAsync("api/Booking", booking).Result;
         }
         public void Put(Booking booking)
         {
+            client.DefaultRequestHeaders.Add("api-version", "1.0");
+
             client.BaseAddress = new Uri(Uri);
             HttpResponseMessage response = client.PutAsJsonAsync("api/Booking" + "/" + booking.id, booking).Result;
         }
         public void Delete(int id)
         {
+            client.DefaultRequestHeaders.Add("api-version", "1.0");
+
             client.BaseAddress = new Uri(Uri);
             HttpResponseMessage response = client.DeleteAsync("api/Booking" + "/" + id).Result;
         }

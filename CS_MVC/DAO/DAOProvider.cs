@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
 namespace CS_MVC.DAO
@@ -14,6 +15,8 @@ namespace CS_MVC.DAO
         
         public List<Capacity_provider> Get()
         {
+            client.DefaultRequestHeaders.Add("api-version", "1.0");
+
             client.BaseAddress = new Uri(Uri);
             HttpResponseMessage response = client.GetAsync("api/Capacity").Result;
             if (response.IsSuccessStatusCode)
@@ -22,6 +25,8 @@ namespace CS_MVC.DAO
         }
         public Capacity_provider Get(int id)
         {
+            client.DefaultRequestHeaders.Add("api-version", "1.0");
+
             client.BaseAddress = new Uri(Uri);
             HttpResponseMessage response = client.GetAsync("api/Capacity"+"/"+id).Result;
             if (response.IsSuccessStatusCode)
@@ -30,16 +35,22 @@ namespace CS_MVC.DAO
         }
         public void Post(Capacity_provider capacity_Provider)
         {
+            client.DefaultRequestHeaders.Add("api-version", "1.0");
+
             client.BaseAddress = new Uri(Uri);
             HttpResponseMessage response = client.PostAsJsonAsync("api/Capacity", capacity_Provider).Result;
         }
         public void Put(Capacity_provider capacity_Provider)
         {
+            client.DefaultRequestHeaders.Add("api-version", "1.0");
+
             client.BaseAddress = new Uri(Uri);
             HttpResponseMessage response = client.PutAsJsonAsync("api/Capacity"+"/"+ capacity_Provider.id, capacity_Provider).Result;
         }
         public void Delete(int id)
         {
+            client.DefaultRequestHeaders.Add("api-version", "1.0");
+
             client.BaseAddress = new Uri(Uri);
             HttpResponseMessage response = client.DeleteAsync("api/Capacity" + "/" + id).Result;
         }

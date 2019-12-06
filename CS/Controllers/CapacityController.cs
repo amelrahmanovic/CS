@@ -9,11 +9,13 @@ using Models;
 
 namespace CS.Controllers
 {
+    [ApiVersion("1.0")]
     [Route("api/[controller]")]
     [ApiController]
     public class CapacityController : ControllerBase
     {
         DAOCapacity daocapacity = new DAOCapacity();
+        
         // GET: api/Capacity
         [HttpGet]
         public IEnumerable<Capacity_provider> Get()
